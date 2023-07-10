@@ -1,15 +1,16 @@
 import React from 'react'
-
+import "../styles/TodoItem.css"
 function TodoItem({ text, completed }) {
     return (
-        <li>
-            <span>👌</span>
+
+        <li >
+            <span className='check'></span>
 
 
 
-            {text}
+            <p> {text} </p>
 
-            <span>❌</span>
+            <span className='x'  >X</span>
 
         </li>
     )

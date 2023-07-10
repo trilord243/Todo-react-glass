@@ -1,14 +1,13 @@
 button {
-  background-color: #4c6baf;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  margin: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 30px;
+  display: flex;
+  margin-left: auto;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
-  cursor: pointer;
-  transition-duration: 0.4s;
+  font-size: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: #56ac91;
+  color: white;
+  border: none;
 }

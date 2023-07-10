@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="card" >
-      <TodoCounter completed={16} total={25} />
+      <TodoCounter completed={16} total={25} className="tittle" />
       <TodoSearch />
 
       <TodoList>
