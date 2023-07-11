@@ -1,53 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreateTodoButton from "./components/CreateTodoButton";
 import TodoCounter from "./components/TodoCounter";
 import TodoItem from "./components/TodoItem";
 import TodoList from "./components/TodoList";
 import TodoSearch from "./components/TodoSearch";
 import "./styles/app.css"
-/*
-const defaultTodos = [
-  {
-    text: 'Cortar cebolla', completed: false
-  }, {
-    text: 'xdxdxd', completed: false
-  }, {
-    text: 'XDXDXDXDXDXDXD', completed: false
-  }, {
-    text: 'Ya termino', completed: false
-  },
-]
-
-
-
-localStorage.setItem("TODOS_V1", JSON.stringify(defaultTodos))
-*/
-function useLocalStorage(itemName, initialValue) {
-  const localStorageItem = localStorage.getItem(itemName);
-  let parsedItem;
-  if (!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue))
-    parsedItem = initialValue;
-  } else {
-
-    parsedItem = JSON.parse(localStorageItem);
-  };
-
-  const [item, setItem] = useState(parsedItem);
-  const saveItem = (newItem) => {
-    const stringifiedTodos = JSON.stringify(newItem);
-    localStorage.setItem(itemName, stringifiedTodos);
-    setItem(newItem);
-  };
-
-  return [item, saveItem];
-
-}
+import { useLocalStorage } from "./customHooks/UseLocalStorage";
+import TodoLoading from "./components/TodoLoading";
+import TodoError from "./components/TodoError";
 
 function App() {
 
 
-  const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);
+  const { item: todos, saveItem: saveTodos, loading, error } = useLocalStorage("TODOS_V1", []);
 
 
 
@@ -81,6 +46,8 @@ function App() {
 
   }
 
+
+
   return (
     <div className="card" >
       <TodoCounter completed={completedTodos} total={totalTodos} className="tittle" />
@@ -91,6 +58,12 @@ function App() {
       />
 
       <TodoList>
+        {loading && <TodoLoading />}
+        {error && <TodoError />}
+        {(!loading && searchedTodos.length === 0) && <p> Crea tu primer TODO!</p>}
+
+
+
         {searchedTodos.map(todo => (
           <TodoItem key={todo.text}
             text={todo.text}
