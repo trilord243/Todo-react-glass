@@ -10,4 +10,14 @@ button {
   background-color: #56ac91;
   color: white;
   border: none;
+  transform: rotate(0);
+  transition: transform 0.5s ease-in-out;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 4);
+}
+
+.TodoButton:hover {
+  background-color: #56ac91;
+  color: white;
+  cursor: pointer;
+  transform: rotate(360deg);
 }

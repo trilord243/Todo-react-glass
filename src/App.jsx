@@ -11,9 +11,9 @@ const defaultTodos = [
   }, {
     text: 'xdxdxd', completed: true
   }, {
-    text: 'XDXDXDXDXDXDXD', completed: true
+    text: 'XDXDXDXDXDXDXD', completed: false
   }, {
-    text: 'Ya termino', completed: true
+    text: 'Ya termino', completed: false
   },
 ]
 function App() {
