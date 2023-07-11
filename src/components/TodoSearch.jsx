@@ -1,8 +1,10 @@
-import React from 'react'
+
+
 import "../styles/TodoSearch.css"
-function TodoSearch() {
+function TodoSearch({ searchValue, setSearchValue }) {
+
     return (
-        <input placeholder="Cortar Cebolla" />
+        <input placeholder="Cortar Cebolla" value={searchValue} onChange={(e) => { setSearchValue(e.target.value) }} />
     )
 }
 
